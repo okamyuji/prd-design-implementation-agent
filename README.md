@@ -1,9 +1,13 @@
-# PRD Design Implementation Agent
+[![Build Status](https://github.com/okamyuji/prd-design-implementation-agent/actions/workflows/main.yml/badge.svg)](https://github.com/okamyuji/prd-design-implementation-agent/actions/workflows/main.yml)
 
-This repository is used as the execution handoff point for an n8n workflow that creates PRD and DesignDoc artifacts, then delegates implementation work to Codex Cloud through GitHub issues.
+# prd-design-implementation-agent
 
-## Codex Cloud Verification
+PRD・DesignDocを入力として受け取り、対象リポジトリへの実装変更プランを自動生成するエージェントです。
 
-- Environment URL: https://chatgpt.com/codex/cloud/settings/environment/69f66ac0b80c819188839e0302c8c9e0
-- Verification file expected from Codex: `codex-cloud-verification.md`
+## 概要
 
+このリポジトリは、プロダクト要求仕様書（PRD）と設計ドキュメント（DesignDoc）を入力として、対象リポジトリに対する最小限かつ的確な実装変更を自動的に計画・提案するエージェントの実装です。
+
+## 使い方
+
+詳細は各ドキュメントを参照してください。
