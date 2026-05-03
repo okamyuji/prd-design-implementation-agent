@@ -52,7 +52,7 @@ graph TD
         - GitHub Actionsのワークフロー名（例: `CI`）を特定する。
         - リポジトリのオーナー名 (`okamyuji`) とリポジトリ名 (`prd-design-implementation-agent`) を特定する。
         - shields.ioのGitHub Actionsワークフローバッジ生成ルールに従い、URLを構築する。
-            - フォーマット: `https://img.shields.io/github/actions/workflow/status/{owner}/{repo}/{workflow_file_name}/{branch}?branch={branch}&style=for-the-badge`
+            - フォーマット: https://img.shields.io/github/actions/workflow/status/{owner}/{repo}/{workflow_file_name}?branch={branch}&style=for-the-badge
             - 例: `https://img.shields.io/github/actions/workflow/status/okamyuji/prd-design-implementation-agent/ci.yml?branch=main&style=for-the-badge`
     3. **Markdown形式の生成**: 
         - 生成したURLを元にMarkdownの画像リンク形式を構築する。
