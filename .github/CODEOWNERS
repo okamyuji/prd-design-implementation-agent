@@ -1,0 +1,4 @@
+# 自動生成されるPRはhuman reviewが必須(Mercari Policy Bot相当)
+# AI Coding Agent(Bedrockや今後のCodexなど)が作成するPRに対して
+# CODEOWNERSが自動アサインされる
+*       @okamyuji
