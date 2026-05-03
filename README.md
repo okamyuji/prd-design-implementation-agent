@@ -1,59 +1,39 @@
 # prd-design-implementation-agent
 
-A GitHub App that automatically generates PRD (Product Requirements Document) and Design Document from issues, then implements the changes using AI.
+An automated agent that transforms PRDs and Design Docs into repository changes via pull requests.
 
-## Features
+## Overview
 
-- Automatically generates PRD and Design Document from GitHub issues
-- Implements changes based on PRD and Design Document using AI
-- Creates pull requests with the implemented changes
+This repository contains an AI-powered implementation agent that:
 
-## Setup
-
-### Prerequisites
-
-- Node.js 20+
-- A GitHub App with the following permissions:
-  - Repository: Read & Write (Contents, Pull requests, Issues)
-  - Organization: Read (Members)
-- Google Cloud Project with the following APIs enabled:
-  - Vertex AI API
-  - Google Docs API
-  - Google Drive API
-
-### Environment Variables
-
-```bash
-APP_ID=your_github_app_id
-PRIVATE_KEY=your_github_app_private_key
-WEBHOOK_SECRET=your_webhook_secret
-GOOGLE_CLOUD_PROJECT=your_gcp_project_id
-GOOGLE_CLOUD_LOCATION=us-central1
-```
-
-### Installation
-
-```bash
-npm install
-npm run build
-npm start
-```
+1. Accepts a PRD (Product Requirements Document) and Design Doc as input
+2. Analyzes the target repository structure
+3. Generates a file change plan
+4. Creates a pull request with the proposed changes
 
 ## Usage
 
-1. Create a GitHub issue with a description of the feature or change you want to implement.
-2. The app will automatically generate a PRD and Design Document from the issue.
-3. The app will implement the changes based on the PRD and Design Document.
-4. A pull request will be created with the implemented changes.
+The agent is triggered via GitHub Actions workflow dispatch with the following inputs:
 
-## Development
+- `target_repository`: The repository to modify
+- `prd_markdown`: The PRD content in Markdown format
+- `design_doc_markdown`: The Design Doc content in Markdown format
 
-```bash
-npm run dev
-```
+## Workflow
 
-## License
+1. **Input Processing**: Parse PRD and Design Doc
+2. **Repository Analysis**: Examine existing code structure and conventions
+3. **Plan Generation**: Create a JSON file change plan using AI
+4. **PR Creation**: Apply changes and open a pull request
 
-MIT
+## Security
 
-このリポジトリの自動レビューはCodeRabbitとGemini Code Assistで適応します。
+The agent includes the following security measures:
+
+- **Path Validation**: Ensures all file operations are within the repository boundary
+- **Masking**: Sensitive values (tokens, secrets) are masked in logs
+- **Branch Protection**: Changes are always made via pull requests, never directly to protected branches
+
+## Smoke Test - 2026-05-03
+
+本リポジトリのセキュリティ改修（パス検証、マスキング、ブランチ保護）は、2026-05-03時点で動作確認済みです。
