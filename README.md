@@ -1,39 +1,54 @@
 # prd-design-implementation-agent
 
-An automated agent that transforms PRDs and Design Docs into repository changes via pull requests.
+AI-powered agent that automatically generates PRD, Design Doc, and implementation from a task title.
 
 ## Overview
 
-This repository contains an AI-powered implementation agent that:
+This repository provides an automated pipeline that:
+1. Accepts a task title as input
+2. Generates a Product Requirements Document (PRD) using AI
+3. Creates a Design Document based on the PRD
+4. Produces implementation changes guided by both documents
 
-1. Accepts a PRD (Product Requirements Document) and Design Doc as input
-2. Analyzes the target repository structure
-3. Generates a file change plan
-4. Creates a pull request with the proposed changes
+## Features
+
+- **PRD Generation**: Automatically creates structured product requirements
+- **Design Doc Generation**: Translates requirements into technical design
+- **Implementation Planning**: Generates file change plans as structured JSON
+- **Google Docs Integration**: Saves generated documents to Google Docs
+- **GitHub Integration**: Creates branches and pull requests automatically
+
+## Screenshots
+
+### Workflow Trigger
+![Workflow Trigger](docs/images/workflow-trigger.png)
+
+### Generated PRD
+![Generated PRD](docs/images/generated-prd.png)
+
+### Pull Request
+![Pull Request](docs/images/pull-request.png)
 
 ## Usage
 
-The agent is triggered via GitHub Actions workflow dispatch with the following inputs:
+1. Navigate to **Actions** tab in the repository
+2. Select **PRD → DesignDoc → Implementation Agent** workflow
+3. Click **Run workflow**
+4. Enter a task title in the input field
+5. Click **Run workflow** to start the pipeline
 
-- `target_repository`: The repository to modify
-- `prd_markdown`: The PRD content in Markdown format
-- `design_doc_markdown`: The Design Doc content in Markdown format
+## Requirements
 
-## Workflow
+- GitHub Actions enabled
+- OpenAI API key configured as repository secret (`OPENAI_API_KEY`)
+- Google service account credentials for Docs integration
+- GitHub token with appropriate permissions
 
-1. **Input Processing**: Parse PRD and Design Doc
-2. **Repository Analysis**: Examine existing code structure and conventions
-3. **Plan Generation**: Create a JSON file change plan using AI
-4. **PR Creation**: Apply changes and open a pull request
+## Configuration
 
-## Security
+Required secrets:
+- `OPENAI_API_KEY`: OpenAI API key for AI generation
+- `GOOGLE_SERVICE_ACCOUNT_JSON`: Google service account for Docs API
+- `GH_PAT`: GitHub Personal Access Token
 
-The agent includes the following security measures:
-
-- **Path Validation**: Ensures all file operations are within the repository boundary
-- **Masking**: Sensitive values (tokens, secrets) are masked in logs
-- **Branch Protection**: Changes are always made via pull requests, never directly to protected branches
-
-## Smoke Test - 2026-05-03
-
-本リポジトリのセキュリティ改修（パス検証、マスキング、ブランチ保護）は、2026-05-03時点で動作確認済みです。
+最終動作確認: 2026-05-03
