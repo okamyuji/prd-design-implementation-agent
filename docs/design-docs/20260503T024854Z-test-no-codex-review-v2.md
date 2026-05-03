@@ -39,7 +39,7 @@ graph TD
 
 ### 3.1. データモデル
 - **README.mdの内容**: 文字列型。ファイル全体の内容を保持。
-- **追加文言**: 文字列型。「このリポジトリの自動レビューはCodeRabbitとGemini Code Assistで適応します。」
+- **追加文言**: 文字列型。「このリポジトリの自動レビューはCodeRabbitとGemini Code Assistで適用されます。」
 
 ## 4. ロジック設計
 
